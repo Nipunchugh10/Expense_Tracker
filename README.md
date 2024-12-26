@@ -1,6 +1,7 @@
 # EXPENSE TRACKER
 
 A Comprehensive C++ console application for managing personal expenses with features for tracking, categorizing and analyzing spending pattern.
+It is inspired from the [Expense Tracker](https://roadmap.sh/projects/expense-tracker) project featured in the [Backend Roadmap](https://roadmap.sh/backend) from [roadmap.sh](https://roadmap.sh/).
 
 ## FEATURES
 
@@ -34,14 +35,11 @@ A Comprehensive C++ console application for managing personal expenses with feat
 git https://github.com/Nipunchugh10/Expense_Tracker.git
 cd expense-tracker
 ```
-2. Project URL
-[Project URL](https://github.com/Nipunchugh10/Expense_Tracker)
-
-3. Compile the source files
+2. Compile the source files
 ```
 g++ main.cpp Expense.cpp Expense_Tracker.cpp -o expense_tracker
 ```
-4.Run The Application
+3.Run The Application
 ```
 ./expense_tracker
 ```
