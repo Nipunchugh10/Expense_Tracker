@@ -35,9 +35,7 @@ git https://github.com/Nipunchugh10/Expense_Tracker.git
 cd expense-tracker
 ```
 2. Project URL
-```
-https://github.com/Nipunchugh10/Expense_Tracker
-```
+[Project URL](https://github.com/Nipunchugh10/Expense_Tracker)
 
 3. Compile the source files
 ```
