@@ -34,11 +34,16 @@ A Comprehensive C++ console application for managing personal expenses with feat
 git https://github.com/Nipunchugh10/Expense_Tracker.git
 cd expense-tracker
 ```
-2. Compile the source files
+2. Project URL
+```
+https://github.com/Nipunchugh10/Expense_Tracker
+```
+
+3. Compile the source files
 ```
 g++ main.cpp Expense.cpp Expense_Tracker.cpp -o expense_tracker
 ```
-3.Run The Application
+4.Run The Application
 ```
 ./expense_tracker
 ```
