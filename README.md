@@ -85,7 +85,7 @@ Make sure you have a modern C++ compiler supporting C++17 (e.g., GCC/MinGW, Clan
 #### Windows (using MinGW Makefiles)
 1. **Clone the Repository**:
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/Nipunchugh10/Expense_Tracker.git
    cd Expense_Tracker
    ```
 2. **Configure with CMake**:
