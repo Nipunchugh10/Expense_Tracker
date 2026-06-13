@@ -1,0 +1,129 @@
+# ============================================================
+#  Expense Tracker — .gitignore
+#  C++ / CMake / OpenGL / Dear ImGui / Windows Desktop Project
+# ============================================================
+
+# ── Build Directories ────────────────────────────────────────
+build/
+Build/
+out/
+cmake-build-*/
+_build/
+*.build/
+
+# ── Compiled Binaries & Object Files ─────────────────────────
+*.exe
+*.out
+*.app
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.so
+*.dylib
+*.pdb
+*.exp
+*.ilk
+*.map
+
+# ── CMake Generated Files ─────────────────────────────────────
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+install_manifest.txt
+CTestTestfile.cmake
+_deps/
+
+# ── ImGui UI State File ───────────────────────────────────────
+imgui.ini
+
+# ── User Data / Local Expense Storage ─────────────────────────
+# Tracked separately — do not commit personal financial data
+data/*.json
+data/*.csv
+
+# ── IDE & Editor Configs ──────────────────────────────────────
+# Visual Studio
+.vs/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.VC.db
+*.VC.opendb
+
+# CLion / JetBrains
+.idea/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Qt Creator
+*.pro.user*
+*.qbs.user*
+
+# Xcode
+*.xcodeproj/
+*.xcworkspace/
+DerivedData/
+*.pbxuser
+
+# Eclipse CDT
+.project
+.cproject
+.settings/
+
+# ── Compiler / Linker Artifacts ───────────────────────────────
+*.d           # Dependency files
+*.i           # Pre-processed C/C++
+*.s           # Assembly outputs
+*.su          # Stack usage analysis
+
+# ── Static & Shared Library Artifacts ────────────────────────
+lib*.a
+lib*.la
+
+# ── Windows OS Files ──────────────────────────────────────────
+Thumbs.db
+Thumbs.db:encryptable
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ── macOS OS Files ────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# ── Linux OS Files ────────────────────────────────────────────
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ── Logs & Temporary Files ────────────────────────────────────
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.orig
+
+# ── Archive / Package Files ───────────────────────────────────
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.rar
+
+# ── Testing Artifacts ─────────────────────────────────────────
+Testing/
+CTestCostData.txt
