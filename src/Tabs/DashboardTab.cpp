@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <cmath>
 #include <cstring>
 
 static const char* monthNames[] = {
@@ -183,6 +184,26 @@ void DashboardTab::Render(ExpenseTracker& tracker) {
     if (ImPlot::BeginPlot("##BarChart", ImVec2(-1, plotH))) {
         ImPlot::SetupAxes("Month", "Amount ($)");
         ImPlot::SetupAxisTicks(ImAxis_X1, positions, 12, barLabels);
+        ImPlot::SetupAxisLimits(ImAxis_X1, -0.5, 11.5, ImPlotCond_Always);
+
+        // Force Y-axis to start at 0 with a clean, rounded max
+        double maxVal = 0;
+        for (int i = 0; i < 12; i++) {
+            if (barData[i] > maxVal) maxVal = barData[i];
+        }
+        if (maxVal < 1.0) maxVal = 100.0;         // default when no data
+        double headroom = maxVal * 0.15;           // 15% headroom above tallest bar
+        double rawMax   = maxVal + headroom;
+
+        // Round up to a clean number for the axis limit
+        double magnitude = 1.0;
+        while (magnitude * 10.0 <= rawMax) magnitude *= 10.0;
+        double cleanMax = std::ceil(rawMax / magnitude) * magnitude;
+        if (cleanMax < rawMax) cleanMax += magnitude;
+
+        ImPlot::SetupAxisLimits(ImAxis_Y1, 0, cleanMax, ImPlotCond_Always);
+        ImPlot::SetupAxisFormat(ImAxis_Y1, "$%.0f");
+
         ImPlot::PlotBars("Spending", barData, 12, 0.67);
         ImPlot::EndPlot();
     }

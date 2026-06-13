@@ -16,7 +16,7 @@ void ExpensesTab::Render(ExpenseTracker& tracker) {
         addDate[1] = today.month;
         addDate[2] = today.day;
         memset(addCategory, 0, sizeof(addCategory));
-        strncpy(addCurrency, "USD", sizeof(addCurrency) - 1);
+        strncpy(addCurrency, "INR", sizeof(addCurrency) - 1);
     }
 
     ImGui::Spacing();
@@ -167,7 +167,7 @@ void ExpensesTab::RenderAddPopup(ExpenseTracker& tracker) {
 
     ImVec2 center = ImGui::GetMainViewport()->GetCenter();
     ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
-    ImGui::SetNextWindowSize(ImVec2(480, 0), ImGuiCond_Appearing);
+    ImGui::SetNextWindowSize(ImVec2(560, 0), ImGuiCond_Appearing);
 
     if (ImGui::BeginPopupModal("Add Expense", nullptr, ImGuiWindowFlags_AlwaysAutoResize)) {
         ImGui::InputText("Description", addDesc, sizeof(addDesc));
@@ -176,10 +176,10 @@ void ExpensesTab::RenderAddPopup(ExpenseTracker& tracker) {
         ImGui::SetNextItemWidth(120);
         ImGui::InputInt("Year", &addDate[0]);
         ImGui::SameLine();
-        ImGui::SetNextItemWidth(80);
+        ImGui::SetNextItemWidth(110);
         ImGui::InputInt("Mo##add", &addDate[1]);
         ImGui::SameLine();
-        ImGui::SetNextItemWidth(80);
+        ImGui::SetNextItemWidth(110);
         ImGui::InputInt("Day##add", &addDate[2]);
 
         ImGui::InputText("Category", addCategory, sizeof(addCategory));
@@ -192,7 +192,7 @@ void ExpensesTab::RenderAddPopup(ExpenseTracker& tracker) {
                 Date d = {addDate[0], addDate[1], addDate[2]};
                 tracker.AddExpense(addDesc, addAmount, d,
                                    addCategory[0] ? addCategory : "General",
-                                   addCurrency[0] ? addCurrency : "USD");
+                                   addCurrency[0] ? addCurrency : "INR");
                 ImGui::CloseCurrentPopup();
             }
         }
@@ -212,7 +212,7 @@ void ExpensesTab::RenderEditPopup(ExpenseTracker& tracker) {
 
     ImVec2 center = ImGui::GetMainViewport()->GetCenter();
     ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
-    ImGui::SetNextWindowSize(ImVec2(480, 0), ImGuiCond_Appearing);
+    ImGui::SetNextWindowSize(ImVec2(560, 0), ImGuiCond_Appearing);
 
     if (ImGui::BeginPopupModal("Edit Expense", nullptr, ImGuiWindowFlags_AlwaysAutoResize)) {
         ImGui::Text("Editing Expense #%d", editID);
@@ -224,10 +224,10 @@ void ExpensesTab::RenderEditPopup(ExpenseTracker& tracker) {
         ImGui::SetNextItemWidth(120);
         ImGui::InputInt("Year##edit", &editDate[0]);
         ImGui::SameLine();
-        ImGui::SetNextItemWidth(80);
+        ImGui::SetNextItemWidth(110);
         ImGui::InputInt("Mo##edit2", &editDate[1]);
         ImGui::SameLine();
-        ImGui::SetNextItemWidth(80);
+        ImGui::SetNextItemWidth(110);
         ImGui::InputInt("Day##edit2", &editDate[2]);
 
         ImGui::InputText("Category##edit", editCategory, sizeof(editCategory));
@@ -239,7 +239,7 @@ void ExpensesTab::RenderEditPopup(ExpenseTracker& tracker) {
             Date d = {editDate[0], editDate[1], editDate[2]};
             tracker.UpdateExpense(editID, editDesc, editAmount, d,
                                   editCategory[0] ? editCategory : "General",
-                                  editCurrency[0] ? editCurrency : "USD");
+                                  editCurrency[0] ? editCurrency : "INR");
             ImGui::CloseCurrentPopup();
         }
         ImGui::SameLine();

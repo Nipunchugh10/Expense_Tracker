@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <cmath>
 
 void AnalyticsTab::Render(ExpenseTracker& tracker) {
     ImGui::Spacing();
@@ -105,6 +106,25 @@ void AnalyticsTab::Render(ExpenseTracker& tracker) {
     if (ImPlot::BeginPlot("##TrendChart", ImVec2(-1, 340))) {
         ImPlot::SetupAxes("Month", "Amount ($)");
         ImPlot::SetupAxisTicks(ImAxis_X1, positions, 12, barLabels);
+        ImPlot::SetupAxisLimits(ImAxis_X1, -0.5, 11.5, ImPlotCond_Always);
+
+        // Force Y-axis to start at 0 with a clean, rounded max
+        double maxVal = 0;
+        for (int i = 0; i < 12; i++) {
+            if (trendData[i] > maxVal) maxVal = trendData[i];
+        }
+        if (maxVal < 1.0) maxVal = 100.0;          // sensible default
+        double headroom = maxVal * 0.15;
+        double rawMax   = maxVal + headroom;
+
+        double magnitude = 1.0;
+        while (magnitude * 10.0 <= rawMax) magnitude *= 10.0;
+        double cleanMax = std::ceil(rawMax / magnitude) * magnitude;
+        if (cleanMax < rawMax) cleanMax += magnitude;
+
+        ImPlot::SetupAxisLimits(ImAxis_Y1, 0, cleanMax, ImPlotCond_Always);
+        ImPlot::SetupAxisFormat(ImAxis_Y1, "$%.0f");
+
         ImPlot::PlotBars("Spending", trendData, 12, 0.67);
         ImPlot::PlotLine("Trend", trendData, 12);
         ImPlot::EndPlot();
